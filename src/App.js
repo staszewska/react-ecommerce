@@ -1,7 +1,6 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import ProductDetails from './components/ProductDetails';
-
 
 function App() {
   return (
