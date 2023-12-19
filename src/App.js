@@ -1,9 +1,10 @@
 import './App.css';
+import ProductList from './components/ProductList';
 
 function App() {
   return (
     <div>
-      <h1>React - E-Commerce App</h1>
+      <ProductList />
     </div>
   );
 }
