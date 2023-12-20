@@ -28,7 +28,7 @@ function ProductList() {
             <p>€{product.price}</p>
             {/* <img src={product.image} /> */}
 
-            <Link to="/products/1">View Details</Link>
+            <Link to={`/p/${product.id}`}>View Details</Link>
             <button>Add To Cart</button>
           </div>
         ))}
