@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import ProductCard from './ProductCard';
 
 function ProductList() {
   const [products, setProducts] = useState(null);
@@ -20,23 +19,7 @@ function ProductList() {
     <section>
       <h1>PRODUCTS</h1>
 
-      {products &&
-        products.map((product) => (
-          <Card key={product.id} style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={product.image} />
-
-            <Card.Body>
-              <Card.Title>{product.title}</Card.Title>
-
-              <Card.Text>€{product.price}</Card.Text>
-
-              <Button variant="outline-primary" as={Link} to={`/p/${product.id}`}>
-                View Details
-              </Button>
-              <Button variant="success">Add To Cart</Button>
-            </Card.Body>
-          </Card>
-        ))}
+      {products && products.map((product) => <ProductCard product={product} />)}
     </section>
   );
 }
