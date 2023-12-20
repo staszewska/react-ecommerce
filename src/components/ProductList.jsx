@@ -24,7 +24,7 @@ function ProductList() {
         <Row>
           {products &&
             products.map((product) => (
-              <Col md="3">
+              <Col md="3" key={product.id}>
                 <ProductCard product={product} />
               </Col>
             ))}
