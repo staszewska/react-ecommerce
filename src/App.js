@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import ProductDetails from './components/ProductDetails';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

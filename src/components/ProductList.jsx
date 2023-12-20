@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function ProductList() {
@@ -21,16 +22,20 @@ function ProductList() {
 
       {products &&
         products.map((product) => (
-          <div key={product.id}>
-            <p>
-              <b>{product.title}</b>
-            </p>
-            <p>€{product.price}</p>
-            {/* <img src={product.image} /> */}
+          <Card key={product.id} style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={product.image} />
 
-            <Link to={`/p/${product.id}`}>View Details</Link>
-            <button>Add To Cart</button>
-          </div>
+            <Card.Body>
+              <Card.Title>{product.title}</Card.Title>
+
+              <Card.Text>€{product.price}</Card.Text>
+
+              <Button variant="outline-primary" as={Link} to={`/p/${product.id}`}>
+                View Details
+              </Button>
+              <Button variant="success">Add To Cart</Button>
+            </Card.Body>
+          </Card>
         ))}
     </section>
   );
