@@ -1,10 +1,11 @@
 import { Outlet } from 'react-router-dom';
+import TopBar from '../components/TopBar';
 
 function Home() {
   return (
     <>
       <header>
-        <h1>React E-Commerce App</h1>
+        <TopBar />
       </header>
 
       <main>
