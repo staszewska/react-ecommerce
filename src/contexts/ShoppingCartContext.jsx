@@ -2,11 +2,14 @@ import { createContext } from 'react';
 
 const ShoppingCartContext = createContext();
 
-const shoppingCartInitialValue = { count: 3 };
+const initialShoppingCart = [
+  { id: 1, quantity: 2 },
+  { id: 2, quantity: 3 },
+];
 
 function shoppingCartReducer(state, action) {
   switch (action.type) {
   }
 }
 
-export { ShoppingCartContext, shoppingCartInitialValue, shoppingCartReducer };
+export { ShoppingCartContext, initialShoppingCart, shoppingCartReducer };

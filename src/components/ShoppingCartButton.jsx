@@ -10,7 +10,7 @@ function ShoppingCartButton() {
   return (
     <Nav.Link as={Link} to="/s">
       Shopping Cart &nbsp;
-      <Badge bg="danger">{ctx.count}</Badge>
+      <Badge bg="danger">{ctx.length}</Badge>
     </Nav.Link>
   );
 }
