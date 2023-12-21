@@ -1,8 +1,8 @@
-import { Badge } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import ShoppingCartButton from './ShoppingCartButton';
 
 function TopBar() {
   return (
@@ -22,10 +22,7 @@ function TopBar() {
 
             <Nav.Link href="#">Login</Nav.Link>
 
-            <Nav.Link as={Link} to="/s">
-              Shopping Cart &nbsp;
-              <Badge bg="danger">1</Badge>
-            </Nav.Link>
+            <ShoppingCartButton />
           </Nav>
         </Container>
       </Navbar>
