@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { DispatchShoppingCartContext } from '../contexts/ShoppingCartContext';
 
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const dispatch = useContext(DispatchShoppingCartContext);
 
   useEffect(() => {
     const PRODUCT_URI = `https://fakestoreapi.com/products/${id}`;
@@ -25,12 +27,11 @@ function ProductDetails() {
   }
 
   function handleAddToCartClick() {
-    const productToBeOrdered = {
-      id,
+    dispatch({
+      type: 'ADD_PRODUCT',
+      ...product,
       quantity: selectedQuantity,
-    };
-
-    console.log('Product to be ordered: ', productToBeOrdered);
+    });
   }
 
   return (

@@ -1,22 +1,29 @@
 import { Outlet } from 'react-router-dom';
 import TopBar from '../components/TopBar';
 import NavigationTree from '../components/NavigationTree';
-import { ShoppingCartContext, initialShoppingCart, shoppingCartReducer } from '../contexts/ShoppingCartContext';
-import { useState, useReducer } from 'react';
+import {
+  ShoppingCartContext,
+  DispatchShoppingCartContext,
+  initialShoppingCart,
+  shoppingCartReducer,
+} from '../contexts/ShoppingCartContext';
+import { useReducer } from 'react';
 
 function Home() {
   const [shoppingCart, dispatchShoppingCart] = useReducer(shoppingCartReducer, initialShoppingCart);
 
   return (
     <ShoppingCartContext.Provider value={shoppingCart}>
-      <header>
-        <TopBar />
-        <NavigationTree />
-      </header>
+      <DispatchShoppingCartContext.Provider value={dispatchShoppingCart}>
+        <header>
+          <TopBar />
+          <NavigationTree />
+        </header>
 
-      <main>
-        <Outlet />
-      </main>
+        <main>
+          <Outlet />
+        </main>
+      </DispatchShoppingCartContext.Provider>
     </ShoppingCartContext.Provider>
   );
 }
