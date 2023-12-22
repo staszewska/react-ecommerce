@@ -6,7 +6,6 @@ import { DispatchShoppingCartContext } from '../contexts/ShoppingCartContext';
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
   const dispatch = useContext(DispatchShoppingCartContext);
 
   useEffect(() => {
@@ -20,17 +19,11 @@ function ProductDetails() {
       });
   }, []);
 
-  function handleQuantityChange(event) {
-    const selectedQuantity = +event.target.value;
-
-    setSelectedQuantity(selectedQuantity);
-  }
-
   function handleAddToCartClick() {
     dispatch({
       type: 'ADD_PRODUCT',
       ...product,
-      quantity: selectedQuantity,
+      quantity: 1,
     });
   }
 
@@ -42,12 +35,6 @@ function ProductDetails() {
         <div>
           <p>{product.title}</p>
           <p>€{product.price}</p>
-
-          <select name="quantity" value={selectedQuantity} onChange={handleQuantityChange}>
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
-          </select>
 
           <Button variant="success" onClick={handleAddToCartClick}>
             Add To Cart

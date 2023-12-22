@@ -16,6 +16,12 @@ function ShoppingCart() {
 
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
+  function handleQuantityChange(event) {
+    const selectedQuantity = +event.target.value;
+
+    setSelectedQuantity(selectedQuantity);
+  }
+
   return (
     <section>
       <h2>My Shopping Cart</h2>
@@ -28,7 +34,7 @@ function ShoppingCart() {
                 <Card.Title>Product Title</Card.Title>
                 <Card.Text>99 €</Card.Text>
 
-                <select name="quantity" value={selectedQuantity}>
+                <select name="quantity" value={selectedQuantity} onChange={handleQuantityChange}>
                   <option value={1}>1</option>
                   <option value={2}>2</option>
                   <option value={3}>3</option>
