@@ -9,6 +9,8 @@ function ProductDetails() {
   const dispatch = useContext(DispatchShoppingCartContext);
 
   useEffect(() => {
+    console.log('[ProductDetails] useEffect: render');
+
     const PRODUCT_URI = `https://fakestoreapi.com/products/${id}`;
 
     fetch(PRODUCT_URI)
@@ -17,7 +19,7 @@ function ProductDetails() {
         console.log(product);
         setProduct(product);
       });
-  }, []);
+  }, [id]);
 
   function handleAddToCartClick() {
     dispatch({
