@@ -8,23 +8,23 @@ import {
   shoppingCartReducer,
 } from '../contexts/ShoppingCartContext';
 import { useReducer } from 'react';
+import { StoreProvider } from 'easy-peasy';
+import store from '../stores/shoppingCart';
 
 function Home() {
   const [shoppingCart, dispatchShoppingCart] = useReducer(shoppingCartReducer, initialShoppingCart);
 
   return (
-    <ShoppingCartContext.Provider value={shoppingCart}>
-      <DispatchShoppingCartContext.Provider value={dispatchShoppingCart}>
-        <header>
-          <TopBar />
-          <NavigationTree />
-        </header>
+    <StoreProvider store={store}>
+      <header>
+        <TopBar />
+        <NavigationTree />
+      </header>
 
-        <main>
-          <Outlet />
-        </main>
-      </DispatchShoppingCartContext.Provider>
-    </ShoppingCartContext.Provider>
+      <main>
+        <Outlet />
+      </main>
+    </StoreProvider>
   );
 }
 

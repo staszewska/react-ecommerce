@@ -1,16 +1,15 @@
 import Nav from 'react-bootstrap/Nav';
 import { Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { ShoppingCartContext } from '../contexts/ShoppingCartContext';
+import { useStoreState } from 'easy-peasy';
 
 function ShoppingCartButton() {
-  const ctx = useContext(ShoppingCartContext);
+  const count = useStoreState((state) => state.count);
 
   return (
     <Nav.Link as={Link} to="/s">
       Shopping Cart &nbsp;
-      {ctx.length > 0 && <Badge bg="danger">{ctx.length}</Badge>}
+      {count > 0 && <Badge bg="danger">{count}</Badge>}
     </Nav.Link>
   );
 }
