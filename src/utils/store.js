@@ -1,4 +1,4 @@
-import { action, createStore } from 'easy-peasy';
+import { action, computed, createStore } from 'easy-peasy';
 
 function initShoppingCart() {
   const isShoppingCartExisted = localStorage.getItem('shoppingCart');
@@ -27,6 +27,14 @@ const store = createStore({
 
   saveCartToLocalStorage: action((state) => {
     localStorage.setItem('shoppingCart', JSON.stringify(state.shoppingCart));
+  }),
+
+  getSumOfCart: computed((state) => {
+    let sum = 0;
+
+    state.shoppingCart.forEach((product) => (sum += product.price * product.quantity));
+
+    return sum;
   }),
 });
 

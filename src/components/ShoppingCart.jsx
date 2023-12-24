@@ -1,8 +1,10 @@
+import { useStoreState } from 'easy-peasy';
 import { useState } from 'react';
 import { Card, Button, Col, Container, Row } from 'react-bootstrap';
 
 function ShoppingCart() {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const getSumOfCart = useStoreState((state) => state.getSumOfCart);
 
   function handleQuantityChange(event) {
     const selectedQuantity = +event.target.value;
@@ -38,7 +40,7 @@ function ShoppingCart() {
               <Card.Body>
                 <Card.Title>Summary</Card.Title>
 
-                <Card.Text>Total (VAT included) 99 €</Card.Text>
+                <Card.Text>Total (VAT included) {getSumOfCart} €</Card.Text>
                 <Card.Text>Shipping Free</Card.Text>
 
                 <div>
