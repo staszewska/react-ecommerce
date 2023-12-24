@@ -1,17 +1,5 @@
 import { action, computed, createStore } from 'easy-peasy';
 
-function initShoppingCart() {
-  const isShoppingCartExisted = localStorage.getItem('shoppingCart');
-
-  if (!isShoppingCartExisted) {
-    localStorage.setItem('shoppingCart', JSON.stringify([]));
-
-    return [];
-  }
-
-  return JSON.parse(isShoppingCartExisted);
-}
-
 const store = createStore({
   shoppingCart: initShoppingCart(),
 
@@ -37,5 +25,17 @@ const store = createStore({
     return sum;
   }),
 });
+
+function initShoppingCart() {
+  const isShoppingCartExisted = localStorage.getItem('shoppingCart');
+
+  if (!isShoppingCartExisted) {
+    localStorage.setItem('shoppingCart', JSON.stringify([]));
+
+    return [];
+  }
+
+  return JSON.parse(isShoppingCartExisted);
+}
 
 export default store;
