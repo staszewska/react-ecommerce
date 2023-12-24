@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { useStoreState } from 'easy-peasy';
 
 function ShoppingCartButton() {
-  const count = useStoreState((state) => state.count);
+  const shoppingCart = useStoreState((state) => state.shoppingCart);
 
   return (
     <Nav.Link as={Link} to="/s">
       Shopping Cart &nbsp;
-      {count > 0 && <Badge bg="danger">{count}</Badge>}
+      {shoppingCart.length > 0 && <Badge bg="danger">{shoppingCart.length}</Badge>}
     </Nav.Link>
   );
 }
