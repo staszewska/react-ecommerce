@@ -7,6 +7,7 @@ function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const addToCart = useStoreActions((actions) => actions.addToCart);
+  const saveCartToLocalStorage = useStoreActions((actions) => actions.saveCartToLocalStorage);
 
   useEffect(() => {
     console.log('[ProductDetails] useEffect: render');
@@ -23,6 +24,7 @@ function ProductDetails() {
 
   function handleAddToCartClick() {
     addToCart({ ...product, quantity: 1 });
+    saveCartToLocalStorage();
   }
 
   return (

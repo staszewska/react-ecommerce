@@ -23,7 +23,9 @@ const store = createStore({
     if (!isProductAdded) {
       state.shoppingCart.push(payload);
     }
+  }),
 
+  saveCartToLocalStorage: action((state) => {
     localStorage.setItem('shoppingCart', JSON.stringify(state.shoppingCart));
   }),
 });
