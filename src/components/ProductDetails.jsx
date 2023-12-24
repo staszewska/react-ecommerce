@@ -22,10 +22,7 @@ function ProductDetails() {
   }, [id]);
 
   function handleAddToCartClick() {
-    addToCart({
-      ...product,
-      quantity: 1,
-    });
+    addToCart({ ...product, quantity: 1 });
   }
 
   return (
