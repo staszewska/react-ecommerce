@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useStoreActions } from 'easy-peasy';
+import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { DispatchShoppingCartContext } from '../contexts/ShoppingCartContext';
 
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const dispatch = useContext(DispatchShoppingCartContext);
+  const addToCart = useStoreActions((actions) => actions.addToCart);
 
   useEffect(() => {
     console.log('[ProductDetails] useEffect: render');
@@ -22,8 +22,7 @@ function ProductDetails() {
   }, [id]);
 
   function handleAddToCartClick() {
-    dispatch({
-      type: 'ADD_PRODUCT',
+    addToCart({
       ...product,
       quantity: 1,
     });

@@ -1,4 +1,4 @@
-import { createStore } from 'easy-peasy';
+import { action, createStore } from 'easy-peasy';
 
 const store = createStore({
   shoppingCart: [
@@ -12,6 +12,12 @@ const store = createStore({
       image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
     },
   ],
+
+  addToCart: action((state, payload) => {
+    console.log('ADD TO CART');
+
+    state.shoppingCart.push(payload);
+  }),
 });
 
 export default store;
