@@ -1,7 +1,19 @@
 import { action, createStore } from 'easy-peasy';
 
+function initShoppingCart() {
+  const isShoppingCartExisted = localStorage.getItem('shoppingCart');
+
+  if (!isShoppingCartExisted) {
+    localStorage.setItem('shoppingCart', JSON.stringify([]));
+
+    return [];
+  }
+
+  return JSON.parse(isShoppingCartExisted);
+}
+
 const store = createStore({
-  shoppingCart: [],
+  shoppingCart: initShoppingCart(),
 
   addToCart: action((state, payload) => {
     console.log('ADD TO CART');
@@ -11,6 +23,8 @@ const store = createStore({
     if (!isProductAdded) {
       state.shoppingCart.push(payload);
     }
+
+    localStorage.setItem('shoppingCart', JSON.stringify(state.shoppingCart));
   }),
 });
 
