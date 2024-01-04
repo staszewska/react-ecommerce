@@ -15,7 +15,7 @@ function ShoppingCart() {
           {/* CONTENT (LEFT) */}
           <Col md={8}>
             {shoppingCart.map((item) => {
-              return <CartItem product={item} />;
+              return <CartItem key={item.id} product={item} />;
             })}
           </Col>
 

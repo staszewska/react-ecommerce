@@ -13,7 +13,17 @@ const store = createStore({
     }
   }),
 
+  removeProduct: action((state, payload) => {
+    console.log('REMOVE PRODUCT FROM CART');
+
+    const updatedShoppingCart = state.shoppingCart.filter((product) => product.id !== payload.id);
+
+    state.shoppingCart = updatedShoppingCart;
+  }),
+
   saveCartToLocalStorage: action((state) => {
+    console.log('SAVE CART TO LOCAL STORAGE');
+
     localStorage.setItem('shoppingCart', JSON.stringify(state.shoppingCart));
   }),
 

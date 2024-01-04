@@ -1,13 +1,21 @@
+import { useStoreActions } from 'easy-peasy';
 import { useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 
 function CartItem({ product }) {
   const [selectedQuantity, setSelectedQuantity] = useState(product.quantity);
+  const removeProduct = useStoreActions((actions) => actions.removeProduct);
+  const saveCartToLocalStorage = useStoreActions((actions) => actions.saveCartToLocalStorage);
 
   function handleQuantityChange(event) {
     const selectedQuantity = +event.target.value;
 
     setSelectedQuantity(selectedQuantity);
+  }
+
+  function handleRemoveProductClick() {
+    removeProduct(product);
+    saveCartToLocalStorage();
   }
 
   return (
@@ -23,7 +31,9 @@ function CartItem({ product }) {
         </select>
 
         <Button variant="primary">Update</Button>
-        <Button variant="danger">Remove</Button>
+        <Button variant="danger" onClick={handleRemoveProductClick}>
+          Remove
+        </Button>
       </Card.Body>
     </Card>
   );
