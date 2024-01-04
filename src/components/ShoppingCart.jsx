@@ -3,6 +3,7 @@ import { Card, Button, Col, Container, Row } from 'react-bootstrap';
 import CartItem from './CartItem';
 
 function ShoppingCart() {
+  const shoppingCart = useStoreState((state) => state.shoppingCart);
   const getSumOfCart = useStoreState((state) => state.getSumOfCart);
 
   return (
@@ -13,7 +14,9 @@ function ShoppingCart() {
         <Row>
           {/* CONTENT (LEFT) */}
           <Col md={8}>
-            <CartItem />
+            {shoppingCart.map((item) => {
+              return <CartItem product={item} />;
+            })}
           </Col>
 
           {/* CONTENT (RIGHT) */}

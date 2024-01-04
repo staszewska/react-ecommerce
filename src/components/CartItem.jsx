@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 
 function CartItem({ product }) {
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [selectedQuantity, setSelectedQuantity] = useState(product.quantity);
 
   function handleQuantityChange(event) {
     const selectedQuantity = +event.target.value;
@@ -13,8 +13,8 @@ function CartItem({ product }) {
   return (
     <Card>
       <Card.Body>
-        <Card.Title>Product Title</Card.Title>
-        <Card.Text>99 €</Card.Text>
+        <Card.Title>{product.title}</Card.Title>
+        <Card.Text>€{product.price}</Card.Text>
 
         <select name="quantity" value={selectedQuantity} onChange={handleQuantityChange}>
           <option value={1}>1</option>
@@ -23,6 +23,7 @@ function CartItem({ product }) {
         </select>
 
         <Button variant="primary">Update</Button>
+        <Button variant="danger">Remove</Button>
       </Card.Body>
     </Card>
   );
