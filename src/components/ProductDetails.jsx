@@ -1,12 +1,13 @@
 import { useStoreActions } from 'easy-peasy';
 import { useEffect, useState } from 'react';
-import { Button, Form, Row, Col } from 'react-bootstrap';
+import { Button, Form, Row, Col, Toast } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [show, setShow] = useState(false);
   const addToCart = useStoreActions((actions) => actions.addToCart);
   const saveCartToLocalStorage = useStoreActions((actions) => actions.saveCartToLocalStorage);
 
@@ -32,10 +33,13 @@ function ProductDetails() {
   function handleAddToCartClick() {
     addToCart({ ...product, quantity: selectedQuantity });
     saveCartToLocalStorage();
+    setShow(true);
   }
 
   return (
     <>
+      {/* <ToastNotification oc={} /> */}
+
       <h2>Product Details</h2>
 
       {product && (
@@ -61,6 +65,13 @@ function ProductDetails() {
           </Row>
         </div>
       )}
+
+      <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+        <Toast.Header>
+          <strong className="me-auto">Success</strong>
+        </Toast.Header>
+        <Toast.Body>Added to your Shopping Cart</Toast.Body>
+      </Toast>
     </>
   );
 }
