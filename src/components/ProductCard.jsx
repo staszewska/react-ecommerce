@@ -4,9 +4,9 @@ import { Rating } from 'react-simple-star-rating';
 
 function ProductCard({ product }) {
   return (
-    <Card key={product.id} style={{ width: '10rem' }}>
+    <Card key={product.id}>
       <Link to={`/p/${product.id}`}>
-        <Card.Img variant="top" src={product.image} />
+        <Card.Img variant="top" src={product.image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
 
         <Card.Body>
           <Card.Title>{product.title}</Card.Title>
