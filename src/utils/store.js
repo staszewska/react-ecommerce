@@ -35,7 +35,7 @@ const store = createStore({
     return sum;
   }),
 
-  getAmountOfCartItems: computed((state) => {
+  getNumberOfCartItems: computed((state) => {
     return state.shoppingCart.length;
   }),
 });
