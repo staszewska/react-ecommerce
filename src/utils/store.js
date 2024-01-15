@@ -13,6 +13,21 @@ const store = createStore({
     }
   }),
 
+  updateCartItem: action((state, payload) => {
+    console.log('UPDATE CART');
+    console.log('[updateCartItem] payload', payload);
+
+    const updatedShoppingCart = state.shoppingCart.map((item) => {
+      if (item.id === payload.id) {
+        return payload;
+      }
+
+      return item;
+    });
+
+    state.shoppingCart = updatedShoppingCart;
+  }),
+
   removeProduct: action((state, payload) => {
     console.log('REMOVE PRODUCT FROM CART');
 

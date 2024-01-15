@@ -6,11 +6,19 @@ function CartItem({ product }) {
   const [selectedQuantity, setSelectedQuantity] = useState(product.quantity);
   const removeProduct = useStoreActions((actions) => actions.removeProduct);
   const saveCartToLocalStorage = useStoreActions((actions) => actions.saveCartToLocalStorage);
+  const updateCartItem = useStoreActions((actions) => actions.updateCartItem);
 
   function handleQuantityChange(event) {
     const selectedQuantity = +event.target.value;
 
     setSelectedQuantity(selectedQuantity);
+  }
+
+  function handleUpdateQuantityClick() {
+    const payload = { ...product, quantity: selectedQuantity };
+
+    updateCartItem(payload);
+    saveCartToLocalStorage();
   }
 
   function handleRemoveProductClick() {
@@ -30,7 +38,9 @@ function CartItem({ product }) {
           <option value={3}>3</option>
         </select>
 
-        <Button variant="primary">Update</Button>
+        <Button variant="primary" onClick={handleUpdateQuantityClick}>
+          Update
+        </Button>
         <Button variant="danger" onClick={handleRemoveProductClick}>
           Remove
         </Button>
