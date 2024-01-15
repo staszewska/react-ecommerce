@@ -51,7 +51,11 @@ const store = createStore({
   }),
 
   getNumberOfCartItems: computed((state) => {
-    return state.shoppingCart.length;
+    let sum = 0;
+
+    state.shoppingCart.forEach((product) => (sum += product.quantity));
+
+    return sum;
   }),
 });
 
