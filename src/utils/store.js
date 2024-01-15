@@ -34,6 +34,10 @@ const store = createStore({
 
     return sum;
   }),
+
+  getAmountOfCartItems: computed((state) => {
+    return state.shoppingCart.length;
+  }),
 });
 
 function initShoppingCart() {
