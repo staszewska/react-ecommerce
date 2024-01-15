@@ -1,6 +1,6 @@
 import { useStoreActions } from 'easy-peasy';
 import { useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 
 function CartItem({ product }) {
   const [selectedQuantity, setSelectedQuantity] = useState(product.quantity);
@@ -32,18 +32,27 @@ function CartItem({ product }) {
         <Card.Title>{product.title}</Card.Title>
         <Card.Text>€{product.price}</Card.Text>
 
-        <select name="quantity" value={selectedQuantity} onChange={handleQuantityChange}>
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-        </select>
+        <Row>
+          <Col md={4}>
+            <Form.Select value={selectedQuantity} onChange={handleQuantityChange}>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+            </Form.Select>
+          </Col>
 
-        <Button variant="primary" onClick={handleUpdateQuantityClick}>
-          Update
-        </Button>
-        <Button variant="danger" onClick={handleRemoveProductClick}>
-          Remove
-        </Button>
+          <Col md={2}>
+            <Button variant="primary" size="lg" onClick={handleUpdateQuantityClick}>
+              Update
+            </Button>
+          </Col>
+
+          <Col md={2}>
+            <Button variant="danger" size="lg" onClick={handleRemoveProductClick}>
+              Remove
+            </Button>
+          </Col>
+        </Row>
       </Card.Body>
     </Card>
   );
