@@ -25,7 +25,7 @@ function ShoppingCart() {
               <Card.Body>
                 <Card.Title>Summary</Card.Title>
 
-                <Card.Text>Total (VAT included) {getSumOfCart} €</Card.Text>
+                <Card.Text>Total (VAT included) {getSumOfCart.toFixed(2)} €</Card.Text>
                 <Card.Text>Shipping Free</Card.Text>
 
                 <div>
