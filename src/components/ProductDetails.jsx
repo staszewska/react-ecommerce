@@ -1,13 +1,20 @@
 import { useStoreActions } from 'easy-peasy';
 import { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
 function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
   const addToCart = useStoreActions((actions) => actions.addToCart);
   const saveCartToLocalStorage = useStoreActions((actions) => actions.saveCartToLocalStorage);
+
+  function handleQuantityChange(event) {
+    const selectedQuantity = +event.target.value;
+
+    setSelectedQuantity(selectedQuantity);
+  }
 
   useEffect(() => {
     console.log('[ProductDetails] useEffect: render');
@@ -23,7 +30,7 @@ function ProductDetails() {
   }, [id]);
 
   function handleAddToCartClick() {
-    addToCart({ ...product, quantity: 1 });
+    addToCart({ ...product, quantity: selectedQuantity });
     saveCartToLocalStorage();
   }
 
@@ -36,9 +43,22 @@ function ProductDetails() {
           <p>{product.title}</p>
           <p>€{product.price}</p>
 
-          <Button variant="success" onClick={handleAddToCartClick}>
-            Add To Cart
-          </Button>
+          {/* CTA */}
+          <Row>
+            <Col md={4}>
+              <Form.Select value={selectedQuantity} onChange={handleQuantityChange}>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+              </Form.Select>
+            </Col>
+
+            <Col md={2}>
+              <Button variant="success" onClick={handleAddToCartClick}>
+                Add To Cart
+              </Button>
+            </Col>
+          </Row>
         </div>
       )}
     </>
