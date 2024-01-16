@@ -1,6 +1,7 @@
 import { useStoreState } from 'easy-peasy';
 import { Card, Button, Col, Container, Row } from 'react-bootstrap';
 import CartItem from './CartItem';
+import { Link } from 'react-router-dom';
 
 function ShoppingCart() {
   const shoppingCart = useStoreState((state) => state.shoppingCart);
@@ -29,8 +30,11 @@ function ShoppingCart() {
                 <Card.Text>Shipping Free</Card.Text>
 
                 <div>
-                  <Button variant="success">Go Checkout</Button>
+                  <Button as={Link} to={'/c'} variant="success">
+                    Go Checkout
+                  </Button>
                 </div>
+
                 <div>
                   <Button variant="outline-primary">Continue Shopping</Button>
                 </div>
