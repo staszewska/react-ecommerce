@@ -18,7 +18,9 @@ function TopBar() {
               Products
             </Nav.Link>
 
-            <Nav.Link href="#">Categories</Nav.Link>
+            <Nav.Link as={Link} to="/categories">
+              Categories
+            </Nav.Link>
 
             {/* TODO: */}
             {/* <Nav.Link href="#">Login</Nav.Link> */}
