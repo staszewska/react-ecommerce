@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import ShoppingCart from './components/ShoppingCart';
 import Checkout from './components/Checkout';
 import ProductCategoryList from './components/ProductCategoryList';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/s" element={<ShoppingCart />} />
         <Route path="/c" element={<Checkout />} />
         <Route path="/categories" element={<ProductCategoryList />} />
+        <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
   );
