@@ -20,7 +20,8 @@ function TopBar() {
 
             <Nav.Link href="#">Categories</Nav.Link>
 
-            <Nav.Link href="#">Login</Nav.Link>
+            {/* TODO: */}
+            {/* <Nav.Link href="#">Login</Nav.Link> */}
 
             <ShoppingCartButton />
           </Nav>
