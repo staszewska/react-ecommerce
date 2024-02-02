@@ -32,36 +32,67 @@ function CheckoutDetails() {
 
       <Form.Group className="mb-3" controlId="fullName">
         <Form.Label>Full name</Form.Label>
-        <Form.Control type="text" placeholder="Enter Full Name" onChange={(event) => setFullName(event.target.value)} />
+        <Form.Control
+          required
+          type="text"
+          placeholder="Enter Full Name"
+          value={fullName}
+          onChange={(event) => setFullName(event.target.value)}
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="address">
         <Form.Label>Address</Form.Label>
-        <Form.Control type="text" placeholder="Enter Address" onChange={(event) => setAddress(event.target.value)} />
+        <Form.Control
+          required
+          type="text"
+          placeholder="Enter Address"
+          onChange={(event) => setAddress(event.target.value)}
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="postalCode">
         <Form.Label>Postal code</Form.Label>
         <Form.Control
+          required
           type="text"
           placeholder="Enter Postal Code"
+          value={postalCode}
           onChange={(event) => setPostalCode(event.target.value)}
         />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="city">
         <Form.Label>City</Form.Label>
-        <Form.Control type="text" placeholder="Enter City" onChange={(event) => setCity(event.target.value)} />
+        <Form.Control
+          required
+          type="text"
+          placeholder="Enter City"
+          value={city}
+          onChange={(event) => setCity(event.target.value)}
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="phone">
         <Form.Label>Phone</Form.Label>
-        <Form.Control type="text" placeholder="Enter Phone" onChange={(event) => setPhone(event.target.value)} />
+        <Form.Control
+          required
+          type="text"
+          placeholder="Enter Phone"
+          value={phone}
+          onChange={(event) => setPhone(event.target.value)}
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="email">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter Email" onChange={(event) => setEmail(event.target.value)} />
+        <Form.Control
+          required
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
         <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
       </Form.Group>
 
@@ -69,12 +100,18 @@ function CheckoutDetails() {
 
       <h3>Payment</h3>
 
-      <Form.Select aria-label="Default select example" onChange={(event) => setPayment(event.target.value)}>
-        <option>Select payment method</option>
+      <Form.Control
+        required
+        as="select"
+        aria-label="Default select example"
+        value={payment}
+        onChange={(event) => setPayment(event.target.value)}
+      >
+        <option value="">Select payment method</option>
         <option value="paypal">PayPal</option>
         <option value="creditCard">Credit Card</option>
         <option value="cash">Cash</option>
-      </Form.Select>
+      </Form.Control>
 
       <Button variant="primary" type="submit">
         Buy Now
