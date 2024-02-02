@@ -42,6 +42,13 @@ const store = createStore({
     localStorage.setItem('shoppingCart', JSON.stringify(state.shoppingCart));
   }),
 
+  clearCart: action((state) => {
+    console.log('CLEAR SHOPPING CART');
+
+    state.shoppingCart = [];
+    localStorage.removeItem('shoppingCart');
+  }),
+
   getSumOfCart: computed((state) => {
     let sum = 0;
 

@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 function ShoppingCart() {
   const shoppingCart = useStoreState((state) => state.shoppingCart);
   const getSumOfCart = useStoreState((state) => state.getSumOfCart);
+  const getNumberOfCartItems = useStoreState((state) => state.getNumberOfCartItems);
 
   return (
     <section>
-      <h2>My Shopping Cart</h2>
+      <h2>Shopping Cart</h2>
 
       <Container>
         <Row>

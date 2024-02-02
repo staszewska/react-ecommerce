@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../styles/CheckoutDetails.css';
+import { useStoreActions } from 'easy-peasy';
 
 function CheckoutDetails() {
   const [fullName, setFullName] = useState('');
@@ -11,6 +12,7 @@ function CheckoutDetails() {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [payment, setPayment] = useState('');
+  const clearCart = useStoreActions((actions) => actions.clearCart);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -26,6 +28,8 @@ function CheckoutDetails() {
     };
 
     console.log('[CheckoutDetails] formData:', formData);
+
+    clearCart();
   }
 
   return (
