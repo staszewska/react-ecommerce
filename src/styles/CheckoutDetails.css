@@ -1,0 +1,8 @@
+.CheckoutDetails__CTA {
+  display: flex;
+  gap: 10px;
+}
+
+.CheckoutDetails__CTA button {
+  width: 100%;
+}

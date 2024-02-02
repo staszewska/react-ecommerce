@@ -1,0 +1,4 @@
+.Summary__Row {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import '../styles/CheckoutDetails.css';
 
 function CheckoutDetails() {
   const [fullName, setFullName] = useState('');
@@ -123,9 +125,15 @@ function CheckoutDetails() {
 
       <hr />
 
-      <Button variant="primary" type="submit">
-        Buy Now
-      </Button>
+      <div className="CheckoutDetails__CTA">
+        <Button variant="success" type="submit">
+          Buy Now
+        </Button>
+
+        <Button as={Link} to="/s" variant="danger">
+          Back to Shopping Cart
+        </Button>
+      </div>
     </Form>
   );
 }

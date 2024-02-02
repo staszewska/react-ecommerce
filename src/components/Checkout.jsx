@@ -1,6 +1,7 @@
 import { Row, Col, Card } from 'react-bootstrap';
 import CheckoutDetails from './CheckoutDetails';
 import { useStoreState } from 'easy-peasy';
+import '../styles/Checkout.css';
 
 function Checkout() {
   const getSumOfCart = useStoreState((state) => state.getSumOfCart);
@@ -18,11 +19,18 @@ function Checkout() {
           <Card>
             <Card.Body>
               <Card.Title>Summary</Card.Title>
-              <Card.Text>
-                Total (VAT included) <strong>{getSumOfCart.toFixed(2)} €</strong>
+              <Card.Text className="Summary__Row">
+                <span>Total (VAT included)</span>
+                <span>
+                  <strong>{getSumOfCart.toFixed(2)} €</strong>
+                </span>
               </Card.Text>
-              <Card.Text>
-                Shipping <strong>Free</strong>
+
+              <Card.Text className="Summary__Row">
+                <span>Shipping</span>
+                <span>
+                  <strong>Free</strong>
+                </span>
               </Card.Text>
             </Card.Body>
           </Card>
