@@ -6,11 +6,11 @@ function HeroCarousel() {
   return (
     <Carousel>
       <Carousel.Item>
-        <img src={image01} className="d-block w-100" />
+        <img src={image01} className="d-block w-100" alt="new sale 2024" />
       </Carousel.Item>
 
       <Carousel.Item>
-        <img src={image02} className="d-block w-100" />
+        <img src={image02} className="d-block w-100" alt="online shopping 2024" />
       </Carousel.Item>
     </Carousel>
   );
