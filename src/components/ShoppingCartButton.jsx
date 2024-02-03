@@ -8,7 +8,7 @@ function ShoppingCartButton() {
 
   return (
     <Nav.Link as={Link} to="/s">
-      Shopping Cart &nbsp;
+      🛍️ Shopping Cart &nbsp;
       {numberOfCartItems > 0 && <Badge bg="danger">{numberOfCartItems}</Badge>}
     </Nav.Link>
   );
