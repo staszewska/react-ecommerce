@@ -22,26 +22,40 @@ function ShoppingCart() {
           </Col>
 
           {/* CONTENT (RIGHT) */}
-          <Col md={4}>
+          {getNumberOfCartItems > 0 ? (
+            <Col md={4}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>Summary</Card.Title>
+
+                  <Card.Text>Total (VAT included) {getSumOfCart.toFixed(2)} €</Card.Text>
+                  <Card.Text>Shipping Free</Card.Text>
+
+                  <div>
+                    <Button as={Link} to={'/c'} variant="success">
+                      Go Checkout
+                    </Button>
+                  </div>
+
+                  <div>
+                    <Button variant="outline-primary">Continue Shopping</Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          ) : (
             <Card>
               <Card.Body>
-                <Card.Title>Summary</Card.Title>
-
-                <Card.Text>Total (VAT included) {getSumOfCart.toFixed(2)} €</Card.Text>
-                <Card.Text>Shipping Free</Card.Text>
+                <Card.Title>Shopping Cart is Empty!</Card.Title>
 
                 <div>
-                  <Button as={Link} to={'/c'} variant="success">
-                    Go Checkout
+                  <Button as={Link} to={'/'} variant="primary">
+                    View Awesome Products
                   </Button>
-                </div>
-
-                <div>
-                  <Button variant="outline-primary">Continue Shopping</Button>
                 </div>
               </Card.Body>
             </Card>
-          </Col>
+          )}
         </Row>
       </Container>
     </section>
