@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 import { Col, Container, Row } from 'react-bootstrap';
+import HeroCarousel from './HeroCarousel';
 
 function ProductList() {
   const [products, setProducts] = useState(null);
@@ -18,6 +19,10 @@ function ProductList() {
 
   return (
     <section>
+      <HeroCarousel />
+
+      <hr />
+
       <h1>PRODUCTS</h1>
 
       <Container>
