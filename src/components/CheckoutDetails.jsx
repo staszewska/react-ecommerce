@@ -3,8 +3,10 @@ import { Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../styles/CheckoutDetails.css';
 import { useStoreActions } from 'easy-peasy';
+import { useNavigate } from 'react-router-dom';
 
 function CheckoutDetails() {
+  const navigate = useNavigate();
   const [fullName, setFullName] = useState('');
   const [address, setAddress] = useState('');
   const [postalCode, setPostalCode] = useState('');
@@ -30,6 +32,7 @@ function CheckoutDetails() {
     console.log('[CheckoutDetails] formData:', formData);
 
     clearCart();
+    navigate('/ok');
   }
 
   return (

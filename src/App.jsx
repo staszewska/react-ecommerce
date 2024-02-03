@@ -7,6 +7,7 @@ import ShoppingCart from './components/ShoppingCart';
 import Checkout from './components/Checkout';
 import ProductCategoryList from './components/ProductCategoryList';
 import PageNotFound from './components/PageNotFound';
+import OrderCreated from './components/OrderCreated';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/p/:id" element={<ProductDetails />} />
         <Route path="/s" element={<ShoppingCart />} />
         <Route path="/c" element={<Checkout />} />
+        <Route path="/ok" element={<OrderCreated />} />
         <Route path="/categories" element={<ProductCategoryList />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>

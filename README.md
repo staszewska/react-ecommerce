@@ -20,6 +20,6 @@ https://trello.com/b/3ZGc79Va/react-ecommerce-app
 - Fetch Product Detail from Backend API
 - CRUD features for Shopping Cart using simplified Redux store and localStorage
 - Integrate with UI from React-Bootstrap
-- Handle Checkout form
+- Handle and validate Checkout form
 - Display Product ratings
 - Deployed via Netlify

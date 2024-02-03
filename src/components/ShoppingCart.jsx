@@ -38,7 +38,9 @@ function ShoppingCart() {
                   </div>
 
                   <div>
-                    <Button variant="outline-primary">Continue Shopping</Button>
+                    <Button as={Link} to={'/'} variant="outline-primary">
+                      Continue Shopping
+                    </Button>
                   </div>
                 </Card.Body>
               </Card>
