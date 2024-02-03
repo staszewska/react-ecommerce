@@ -2,6 +2,7 @@ import { useStoreActions } from 'easy-peasy';
 import { useEffect, useState } from 'react';
 import { Button, Form, Row, Col, Toast, Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { Rating } from 'react-simple-star-rating';
 
 function ProductDetails() {
   const { id } = useParams();
@@ -56,6 +57,9 @@ function ProductDetails() {
                 <Card.Body>
                   <Card.Title>{product.title}</Card.Title>
                   <Card.Title>€{product.price}</Card.Title>
+                  <Rating initialValue={product.rating.rate} readonly />
+
+                  <hr />
 
                   <Card.Text>{product.description}</Card.Text>
 
