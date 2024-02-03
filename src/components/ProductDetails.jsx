@@ -1,6 +1,6 @@
 import { useStoreActions } from 'easy-peasy';
 import { useEffect, useState } from 'react';
-import { Button, Form, Row, Col, Toast } from 'react-bootstrap';
+import { Button, Form, Row, Col, Toast, Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 
 function ProductDetails() {
@@ -44,34 +44,45 @@ function ProductDetails() {
 
       {product && (
         <div>
-          <p>{product.title}</p>
-          <p>€{product.price}</p>
-
-          {/* CTA */}
           <Row>
-            <Col md={4}>
-              <Form.Select value={selectedQuantity} onChange={handleQuantityChange}>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-              </Form.Select>
+            <Col md={6}>
+              <Card>
+                <Card.Img variant="top" src={product.image} />
+              </Card>
             </Col>
 
-            <Col md={2}>
-              <Button variant="success" onClick={handleAddToCartClick}>
-                Add To Cart
-              </Button>
+            <Col md={6}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>{product.title}</Card.Title>
+                  <Card.Title>€{product.price}</Card.Title>
+
+                  <Card.Text>{product.description}</Card.Text>
+
+                  <Row>
+                    <Form.Select value={selectedQuantity} onChange={handleQuantityChange}>
+                      <option value={1}>1</option>
+                      <option value={2}>2</option>
+                      <option value={3}>3</option>
+                    </Form.Select>
+
+                    <Button variant="success" onClick={handleAddToCartClick}>
+                      Add To Cart
+                    </Button>
+                  </Row>
+                </Card.Body>
+
+                <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+                  <Toast.Header>
+                    <strong className="me-auto">Success</strong>
+                  </Toast.Header>
+                  <Toast.Body>Added to your Shopping Cart</Toast.Body>
+                </Toast>
+              </Card>
             </Col>
           </Row>
         </div>
       )}
-
-      <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-        <Toast.Header>
-          <strong className="me-auto">Success</strong>
-        </Toast.Header>
-        <Toast.Body>Added to your Shopping Cart</Toast.Body>
-      </Toast>
     </>
   );
 }
