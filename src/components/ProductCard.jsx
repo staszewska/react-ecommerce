@@ -14,7 +14,7 @@ function ProductCard({ product }) {
 
           <Card.Text>€{product.price}</Card.Text>
 
-          <Rating initialValue={product.rating.rate} readonly />
+          <Rating className="small-rating" initialValue={product.rating.rate} readonly />
         </Card.Body>
       </Link>
     </Card>
