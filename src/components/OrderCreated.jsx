@@ -1,7 +1,7 @@
 function OrderCreated() {
   return (
     <section>
-      <h1>Order Created</h1>
+      <h1>Your transaction has been completed successfully.</h1>
     </section>
   );
 }
