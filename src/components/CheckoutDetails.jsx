@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../styles/CheckoutDetails.css';
-import { useStoreActions } from 'easy-peasy';
+import { useStoreActions, useStoreState } from 'easy-peasy';
 import { useNavigate } from 'react-router-dom';
 
 function CheckoutDetails() {
@@ -15,11 +15,16 @@ function CheckoutDetails() {
   const [email, setEmail] = useState('');
   const [payment, setPayment] = useState('');
   const clearCart = useStoreActions((actions) => actions.clearCart);
+  const shoppingCart = useStoreState((state) => state.shoppingCart);
+  const getSumOfCart = useStoreState((state) => state.getSumOfCart);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
+    // console.log(shoppingCart);
+
     const formData = {
+      shoppingCart,
       fullName,
       address,
       postalCode,
@@ -27,12 +32,36 @@ function CheckoutDetails() {
       phone,
       email,
       payment,
+      getSumOfCart,
     };
 
     console.log('[CheckoutDetails] formData:', formData);
 
-    clearCart();
-    navigate('/ok');
+    const response = await fetch('http://localhost:8080/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    //check if the response is ok
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    console.log(response);
+
+    const result = await response.json();
+    console.log('Response from the backend', result);
+
+    //proceed based on the result
+    if (result) {
+      clearCart();
+      navigate('/ok');
+    } else {
+      console.error('Failed to submit: ', result.message);
+    }
   }
 
   return (
